@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="qqboboHome:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="qqbobo.com.war">
+      <element id="artifact" artifact-name="qqboboHome:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SqlMapper">
+    <!-- 定义参数模型 -->
+    <parameterMap type="com.entity.User" id="paramUser">
+        <parameter property="id"/>
+        <parameter property="name"/>
+        <parameter property="pass"/>
+        <parameter property="age"/>
+    </parameterMap>
+
+    <!-- 定义要操纵的SQL语句 -->
+    <insert id="create" parameterType="com.entity.User">
+        INSERT INTO sys_user(name,pass,age)
+        VALUES(#{name},#{pass},#{age})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM sys_user
+        WHERE id=#{value}
+    </delete>
+
+    <update id="modify" parameterType="com.entity.User">
+        UPDATE sys_user
+        <set>
+            <if test="name != null">name=#{name},</if>
+            <if test="pass != null">pass=#{pass},</if>
+            <if test="age != null">age=#{age},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+
+    <select id="findById" parameterType="Integer" resultMap="userMap.userResultMap">
+        SELECT * FROM sys_user
+        WHERE id=#{value}
+    </select>
+    <select id="findAll" resultType="list" resultMap="userMap.userResultMap">
+        SELECT * FROM sys_user
+    </select>
+
+
+    <select id="count" resultType="Integer">
+        SELECT count(*) FROM sys_user
+    </select>
+</mapper>

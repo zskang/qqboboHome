@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMap">
+    <!-- 定义数据库字段与实体对象的映射关系 -->
+    <resultMap type="com.entity.User" id="userResultMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="pass" column="pass"/>
+        <result property="age" column="age"/>
+    </resultMap>
+</mapper>
